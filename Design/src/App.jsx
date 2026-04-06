@@ -1,34 +1,41 @@
-
-
 import './App.css'
 import data from './data'
+import { ArrowRight } from "lucide-react"
+import Card from './components/Card'
+import CourseSection from './CourceSection'
 
 function App() {
 
   return (
     <>
-      <section id="center">
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+    
+    <div className="min-h-screen bg-white p-8 font-sans">
+    
+      <div className="max-w-6xl mx-auto mb-12">
+        <p className="text-gray-600 text-sm mb-4">
+          Note: Hover the component to view the animation & Click the arrow icon
+        </p>
+        <h3 className="text-gray-500 font-medium mb-2">Your SkillShikshya Journey</h3>
+        <h1 className="text-4xl font-extrabold flex items-center gap-2">
+          <span className="text-[#00A86B]">Step In.</span>
+          <span className="text-[#2C3E50]">Skill Up.</span>
+          <span className="text-[#00A86B]">Stand Out. 🚀</span>
+        </h1>
+      </div>
 
-<p>Data small check</p>
-<div className="flex justify-center items-center gap-4 text-black">
-{data.map((item) => (
-  <div key={item.id} className={` w-[48%] bg-green-500 p-4 m-4 rounded-lg text-white flex ${item.illustrationAlign === 'right' ? 'flex-row-reverse' : 'flex-row'} items-center`}>
-    <h2>{item.title}</h2>
-    <p>{item.subtitle}</p>
-    <p>{item.description}</p>
-    <img src={item.image} alt={item.title} />
-  </div>
-))}
-</div>
+     
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+           {data.map((item) => (
+        <Card key={item.id} item={item} />
+      ))}
+      </div>
+    </div>
+ 
+<CourseSection />
 
-
-
-       </section>
     </>
   )
 }
 
 export default App
+
