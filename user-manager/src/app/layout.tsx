@@ -22,7 +22,7 @@ export default function RootLayout({
         <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
           <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
             <Link 
-              href="/users" 
+              href="/" 
               className="text-xl font-bold bg-linear-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent"
             >
               UserDash
