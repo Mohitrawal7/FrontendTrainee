@@ -1,74 +1,3 @@
-// "use client";
-// import { useEffect, useState } from "react";
-// import { Post } from "@/types";
-// import { getUserPosts } from "@/lib/api";
-// import { useParams } from "next/navigation";
-
-// export default function UserPosts() {
-//   const { id } = useParams();
-//   const [posts, setPosts] = useState<Post[]>([]);
-//   const [loading, setLoading] = useState(true);
-//   const [title, setTitle] = useState("");
-//   const [body, setBody] = useState("");
-
-//   useEffect(() => {
-//     async function loadData() {
-//       const apiPosts = await getUserPosts(id as string);
-//       const savedPosts = JSON.parse(localStorage.getItem(`posts-${id}`) || "[]");
-//       setPosts([...savedPosts, ...apiPosts]);
-//       setLoading(false);
-//     }
-//     loadData();
-//   }, [id]);
-
-//   const handleSubmit = (e: React.FormEvent) => {
-//     e.preventDefault();
-//     const newPost = { userId: Number(id), title, body };
-//     const updatedLocal = [newPost, ...posts.filter(p => !p.id)]; // Keep local only
-    
-//     localStorage.setItem(`posts-${id}`, JSON.stringify(updatedLocal));
-//     setPosts([newPost, ...posts]);
-//     setTitle(""); setBody("");
-//   };
-
-//   if (loading) return <p className="p-10">Loading posts...</p>;
-
-//   return (
-//     <div className="max-w-4xl mx-auto p-8">
-//       <h1 className="text-3xl font-bold mb-6">User Posts</h1>
-
-//       {/* Form */}
-//       <form onSubmit={handleSubmit} className="mb-10 p-6 bg-gray-50 rounded-lg">
-//         <h3 className="font-bold mb-4">Add New Post</h3>
-//         <input 
-//           value={title} onChange={e => setTitle(e.target.value)}
-//           placeholder="Title" className="w-full p-2 mb-2 border rounded text-black" required
-//         />
-//         <textarea 
-//           value={body} onChange={e => setBody(e.target.value)}
-//           placeholder="Body" className="w-full p-2 mb-2 border rounded text-black" required
-//         />
-//         <button className="bg-green-600 text-white px-4 py-2 rounded">Submit Post</button>
-//       </form>
-
-//       {/* List */}
-//       <div className="space-y-4">
-//         {posts.map((post, idx) => (
-//           <div key={idx} className="p-4 border-l-4 border-blue-500 bg-white shadow-sm">
-//             <h2 className="font-bold uppercase text-sm">{post.title}</h2>
-//             <p className="text-gray-700">{post.body}</p>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-
-
-
-
-
-
 "use client";
 import { useEffect, useState } from "react";
 import { Post } from "@/types";
@@ -83,6 +12,13 @@ export default function UserPosts() {
   const [body, setBody] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [expanded, setExpanded] = useState<number | null>(null);
+  const [currentPage , setCurrentPage] = useState(1);
+  const postsPerPage = 6;
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
 
   const isLong = (text: string) => text.length > 120;
 const truncate = (text: string) =>
@@ -129,7 +65,7 @@ const truncate = (text: string) =>
 
       {/* POSTS */}
      <div className="space-y-5 grid grid-cols-1 md:grid-cols-3 gap-6">
-  {posts.map((post, idx) => {
+  {currentPosts.map((post, idx) => {
     const isExpanded = expanded === idx;
 
     return (
@@ -161,6 +97,27 @@ const truncate = (text: string) =>
     );
   })}
 </div>
+
+        {/* Pagination */}
+
+ <div className="flex gap-4 justify-center mt-8">
+      <button 
+        disabled={currentPage === 1}
+        onClick={() => setCurrentPage(prev => prev - 1)}
+        className="px-4 py-2 bg-black rounded disabled:opacity-50"
+      >
+        Previous
+      </button>
+      <span className="self-center text-blue-600">Page {currentPage}</span>
+      <button 
+        disabled={indexOfLastPost >= posts.length}
+        onClick={() => setCurrentPage(prev => prev + 1)}
+        className="px-4 py-2 bg-black rounded disabled:opacity-50"
+      >
+        Next
+      </button>
+    </div>
+
 
       {/* MODAL OVERLAY */}
       {showForm && (

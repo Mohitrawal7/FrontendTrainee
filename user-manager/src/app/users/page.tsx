@@ -2,7 +2,9 @@ import { getUsers } from "@/lib/api";
 import UserListClient from "./UserListClient";
 
 export default async function UsersPage() {
+
   const users = await getUsers();
+
 
   return (
     <div className="max-w-6xl mx-auto p-8">
@@ -11,3 +13,4 @@ export default async function UsersPage() {
     </div>
   );
 }
+
