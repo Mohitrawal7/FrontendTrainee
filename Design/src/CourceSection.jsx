@@ -26,10 +26,10 @@ const CourseSection = () => {
 
          
           <div className="flex items-center  gap-8 my-8 mt-13 px-16">
-            <img src="src/assets/React.png" alt="Reacr" className="w-18 h-18 rounded-2xl rotate-70" />
-            <img src="src/assets/tags.png" alt="tools" className="w-20 h-20 rotate-10" />
-            <img src="src/assets/vue.png" alt="Vue" className="w-20 h-20 -rotate-20"  />
-            <img src="src/assets/pin.png" alt="pins" className="w-20 h-20 rotate-10" />
+            <img src="../public/React.png" alt="Reacr" className="w-18 h-18 rounded-2xl rotate-70" />
+            <img src="../public/tags.png" alt="tools" className="w-20 h-20 rotate-10" />
+            <img src="../public/vue.png" alt="Vue" className="w-20 h-20 -rotate-20"  />
+            <img src="../public/pin.png" alt="pins" className="w-20 h-20 rotate-10" />
           </div>
 
           <div className="flex items-center ml-10 mb-10 gap-4 mt-auto">

@@ -8,7 +8,7 @@ const data = [
     bgColor: "bg-[#EF5350]",
     illustrationAlign: "right",
     contentAlign: "left",
-    image:"src/assets/image1.png"
+    image:"../public/image1.png"
   },
   {
     id: "2",
@@ -19,7 +19,7 @@ const data = [
     bgColor: "bg-[#4DB6AC]",
     illustrationAlign: "right",
     contentAlign: "left",
-    image:"src/assets/image2.png"
+    image:"../public/image2.png"
   },
   {
     id: "3",
@@ -30,7 +30,7 @@ const data = [
     bgColor: "bg-[#6C64A8]",
     illustrationAlign: "left",
     contentAlign: "right",
-    image:"src/assets/image3.png"
+    image:"../public/image3.png"
 
   },
   {
@@ -42,7 +42,7 @@ const data = [
     bgColor: "bg-[#A88964]",
     illustrationAlign: "right",
     contentAlign: "left",
-    image:"src/assets/image4.png"
+    image:"../public/image4.png"
   }
 
 ]
