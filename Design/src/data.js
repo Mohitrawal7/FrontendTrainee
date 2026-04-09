@@ -8,7 +8,10 @@ const data = [
     bgColor: "bg-[#EF5350]",
     illustrationAlign: "right",
     contentAlign: "left",
-    image:"/images/image1.png"
+    image:"/images/image1.png",
+     sections: [
+      { id: 1,image: "/ss.png", text: "Clarity unlocked—stickers, sips, and skills all in one go!" },
+    ]
   },
   {
     id: "2",
@@ -19,7 +22,11 @@ const data = [
     bgColor: "bg-[#4DB6AC]",
     illustrationAlign: "right",
     contentAlign: "left",
-    image:"/images/image2.png"
+    image:"/images/image2.png",
+    sections: [
+      { id: 1,image: "/pp.png",  text: "Focused faces--learning mode:ON!" },
+      { id: 2, image: "/kk.png",  text: "Laptops,Lessons and a whole lot of growth!" },
+    ]
   },
   {
     id: "3",
